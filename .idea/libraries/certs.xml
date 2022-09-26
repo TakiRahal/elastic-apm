@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="certs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/server-apm/volumes/data/es/certs/certs.zip!/" />
+      <root url="jar://$PROJECT_DIR$/server-apm/volumes/data/es/certs/ca.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
