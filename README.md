@@ -1,18 +1,23 @@
-# Elastic APM
+# Elastic APM (Application Performance Monitoring)
 
 Elastic APM is an application performance monitoring system built on the Elastic Stack
 
 ## Elastic APM Server 
 
+cd server-apm
 Run : docker-compose -f server-apm.yml up
+For down run : docker-compose -f server-apm.yml down -v --remove-orphans
 
 ## Angular Client APM
 
 Run : ng new angular-client-apm
+
 Install the Agent
+
     + npm install @elastic/apm-rum --save
     
 Installing Elastic APM Angular packageedit
+
     + npm install @elastic/apm-rum-angular --save
     
 Code 
@@ -43,10 +48,13 @@ Code
 ## React Client APM
 
 Run : npx create-react-app my-app --template typescript
+
 Install the Agent
+
     + npm install @elastic/apm-rum --save
     
 Installing Elastic APM React package
+
     + npm install @elastic/apm-rum-react --save 
     
 Code
