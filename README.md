@@ -36,7 +36,8 @@ Code
         // Agent API is exposed through this apm instance
         const apm = service.init({
           serviceName: 'angular-app',
-          serverUrl: 'http://localhost:8200'
+          serverUrl: 'http://localhost:8200',
+          logLevel: "debug"
         })
 
         apm.setUserContext({
