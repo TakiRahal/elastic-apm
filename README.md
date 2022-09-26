@@ -1,27 +1,73 @@
-# AngularClientApm
+# Elastic APM
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+Elastic APM is an application performance monitoring system built on the Elastic Stack
 
-## Development server
+## Elastic APM Server 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run : docker-compose -f server-apm.yml up
 
-## Code scaffolding
+## Angular Client APM
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run : ng new angular-client-apm
+Install the Agent
+    + npm install @elastic/apm-rum --save
+    
+Installing Elastic APM Angular packageedit
+    + npm install @elastic/apm-rum-angular --save
+    
+Code 
+    
+    import { ApmModule, ApmService } from '@elastic/apm-rum-angular'
+    @NgModule({
+      imports: [BrowserModule, ApmModule],
+      declarations: [AppComponent, ContactListComponent, ContactDetailComponent],
+      providers: [ApmService],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule {
+      constructor(service: ApmService) {
+        // Agent API is exposed through this apm instance
+        const apm = service.init({
+          serviceName: 'angular-app',
+          serverUrl: 'http://localhost:8200'
+        })
 
-## Build
+        apm.setUserContext({
+          'username': 'foo',
+          'id': 'bar'
+        })
+      }
+    }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## React Client APM
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run : npx create-react-app my-app --template typescript
+Install the Agent
+    + npm install @elastic/apm-rum --save
+    
+Installing Elastic APM React package
+    + npm install @elastic/apm-rum-react --save 
+    
+Code
+    
+    import { init as initApm } from '@elastic/apm-rum'		
+    initApm({
 
-## Running end-to-end tests
+        // Set required service name (allowed characters: a-z, A-Z, 0-9, -, _, and space)
+        serviceName: 'react-app',
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+        // Set custom APM Server URL (default: http://localhost:8200)
+        serverUrl: 'http://localhost:8200',
 
-## Further help
+        // Set service version (required for sourcemap feature)
+        serviceVersion: '1.0',
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+        logLevel: "debug"
+    })
+      
+    function App() {}
+
+
+## Demo
+
