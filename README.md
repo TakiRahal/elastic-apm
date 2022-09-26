@@ -5,7 +5,9 @@ Elastic APM is an application performance monitoring system built on the Elastic
 ## Elastic APM Server 
 
 cd server-apm
+
 Run : docker-compose -f server-apm.yml up
+
 For down run : docker-compose -f server-apm.yml down -v --remove-orphans
 
 ## Angular Client APM
